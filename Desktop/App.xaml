@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-        <!-- основной цвет -->
+
         <SolidColorBrush x:Key="AccentBrush">#F36E6E</SolidColorBrush>
 
-        <!-- стиль для закруглённых кнопок -->
+
         <Style x:Key="RoundedButton" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
             <Setter Property="Foreground" Value="White"/>
