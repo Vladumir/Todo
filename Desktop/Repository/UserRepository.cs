@@ -1,6 +1,7 @@
-﻿using Todo.Entities;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Todo.Entities;
 
 namespace Desktop.Repository
 {
@@ -8,32 +9,33 @@ namespace Desktop.Repository
     {
         private static readonly List<UserModel> _users = new();
 
-        public static bool Register(UserModel newUser, out string errorMessage)
-        {
-            errorMessage = string.Empty;
+        public static UserModel? CurrentUser { get; private set; }
 
-            if (_users.Any(u => u.Email == newUser.Email))
+        public static bool Register(UserModel user, out string error)
+        {
+            error = string.Empty;
+
+            if (_users.Any(u => u.Email == user.Email))
             {
-                errorMessage = "Пользователь с такой почтой уже существует.";
+                error = "Пользователь с таким Email уже существует!";
                 return false;
             }
 
-            _users.Add(newUser);
+            _users.Add(user);
             return true;
         }
 
-        public static UserModel? Login(string email, string password, out string errorMessage)
+        public static bool Login(string email, string password)
         {
-            errorMessage = string.Empty;
+            var user = _users.FirstOrDefault(u =>
+                u.Email == email &&
+                u.Password == password);
 
-            var user = _users.FirstOrDefault(u => u.Email == email && u.Password == password);
             if (user == null)
-            {
-                errorMessage = "Неверный email или пароль.";
-                return null;
-            }
+                return false;
 
-            return user;
+            CurrentUser = user;
+            return true;
         }
     }
 }

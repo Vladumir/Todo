@@ -15,7 +15,7 @@ using TodoDesktop;
 
 namespace Desktop
 {
-  
+
     public partial class MainEmpty : Window
     {
         public MainEmpty()
@@ -30,11 +30,19 @@ namespace Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            MainWindow MainWindow = new MainWindow();
-            MainWindow.Show();
-            this.Close();
+            var addWindow = new AddTaskWindow();
+            addWindow.Owner = this;
 
 
+            bool? result = addWindow.ShowDialog();
+
+            if (result == true)
+            {
+                var main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
         }
+
     }
 }
