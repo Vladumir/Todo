@@ -9,7 +9,6 @@ namespace Desktop.Repository
     {
         private static readonly List<TaskModel> _tasks = new();
 
-        // Все категории, которые есть у конкретного пользователя
         public static IEnumerable<string> GetCategoriesForUser(Guid ownerId)
         {
             return _tasks.Where(t => t.OwnerId == ownerId).Select(t => t.Category).Distinct();
