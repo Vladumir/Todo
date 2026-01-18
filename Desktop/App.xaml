@@ -1,11 +1,8 @@
 ﻿<Application x:Class="Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="LoginWindow.xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
-
         <SolidColorBrush x:Key="AccentBrush">#F36E6E</SolidColorBrush>
-
 
         <Style x:Key="RoundedButton" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
